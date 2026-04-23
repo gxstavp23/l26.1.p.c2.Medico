@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Atención Médica</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <section id="app-bootstrap" class="container mt-5">
+        <h2>Gestión de Atención Médica</h2>
+         
+        <button class="btn btn-primary" id="body_btAgregarPaciente">Agregar paciente</button>
+        <hr>
+        <div class="alert alert-info">
+            Total de Ventas: <span id="body_lblTotalVentas">0</span>
+        </div>
+
+        <div class="alert alert-info">
+           Total Procedimiento: <span id="body_lblTotalProcedimiento">0</span>
+        </div>
+
+        <div class="alert alert-info">
+           Total Consulta: <span id="body_lblTotalConsulta">0</span>
+        </div>
+
+        <div class="alert alert-info">
+           Total Control: <span id="body_lblTotalControl">0</span>
+        </div>
+
+        <div class="alert alert-info">
+           Porcentaje Procedimiento: <span id="body_lblPorcProcedimiento">0</span>
+        </div>
+
+        <div class="alert alert-info">
+           Porcentaje Consulta: <span id="body_lblPorcConsulta">0</span>
+        </div>
+
+        <div class="alert alert-info">
+           Porcentaje Control: <span id="body_lblPorcControl">0</span>
+        </div>
+
+        <div class="alert alert-info">
+           Porcentaje con descuento: <span id="body_lblPorcDescuentos">0</span>
+        </div>
+
+
+    </section>
+    <hr>
+
+    <section class="modal fade" id="paciente" tabindex="-1" aria-hidden="true" >
+
+        <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Procesar paciente</h5>
+        </div>
+
+
+        <div class="modal-body">
+            <label class="form-label" >Nombre
+                <input type="text" class="form-control" id="paciente_inNombre" placeholder="Juan">
+            </label>
+        </div>
+
+        <div class="modal-body">
+            <label class="form-label" >Apellido
+                <input type="text" class="form-control" id="paciente_inApellido" placeholder="Gabriel">
+            </label>
+        </div class="modal-body">
+
+        <div class="modal-body">
+            <label class="form-label" >Cédula
+                <input type="number" class="form-control" id="paciente_inCedula" placeholder="1057696">
+            </label>
+        </div>
+
+        <div class="modal-body">
+            <label class="form-label">Sexo
+                <select id="paciente_inSexo" class="form-control">
+                    <option value="" disabled selected hidden>Seleccione una opción...</option>
+                    <option value="F">Femenino</option>
+                    <option value="M">Masculino</option>
+                </select>
+            </label>
+        </div>
+
+        <div class="modal-body">
+            <label class="form-label" >Fecha de nacimiento 
+                <input type="date"  class="form-control" id="paciente_inFechaNac">
+            </label>
+        </div>
+
+             <div class="modal-body">
+            <label class="form-label">Tipo de Atención
+                <select id="paciente_inTipoAtencion" class="form-control">
+                    <option value="" disabled selected hidden>Seleccione una opción...</option>
+                    <option value="1">Procedimiento</option>
+                    <option value="2">Consulta</option>
+                    <option value="3">Control</option>
+                </select>
+            </label>
+        </div>
+
+         <br>
+
+         <div class="modal-footer">
+            <button id="paciente_btCancelar" class="btn btn-success">Cancelar</button>
+            <button id="paciente_btAceptar"  class="btn btn-secondary">Aceptar</button>
+
+         </div>
+ 
+
+    </section>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script type="module">
+        import Cl_cPaciente from "./dist/controllers/Cl_cPaciente.js"
+        import Cl_cGestionMedica from "./dist/controllers/Cl_cGestionMedica.js"
+        
+        import Cl_vPacienteBootstrap from "./dist/views/Cl_vPacienteBootstrap.js";
+        import Cl_vGestionMedicaBootstrap from "./dist/views/Cl_vGestionMedicaBootstrap.js";
+
+        const vistaPaciente = new Cl_vPacienteBootstrap();        
+        const vistaGestionMedica = new Cl_vGestionMedicaBootstrap();
+        
+        const controladorPaciente = new Cl_cPaciente(vistaPaciente);
+        new Cl_cGestionMedica(vistaGestionMedica, controladorPaciente);
+    </script>
+    
+</body>
+</html>
